@@ -36,21 +36,21 @@ loop:
 
 nums:
     ; do the addition
-	mov	ax, 6    	; put 6 into ax
-	add	ax, 9		; add 9 to 6 into ax
+    mov	ax, 6    	; put 6 into ax
+    add	ax, 9		; add 9 to 6 into ax
 
-	; to print the individual characters, we need to divide
-	; to get the tens place and the ones place.
-	mov dx, 0		; clear dividend
-	mov cx, 10		; divide ax by 10
-	div cx			; ax = 1, dx = 5
-	add ax, 0x30	; add ascii value of '0' to get the ascii value of the number
-	add dx, 0x30
+    ; to print the individual characters, we need to divide
+    ; to get the tens place and the ones place.
+    mov dx, 0		; clear dividend
+    mov cx, 10		; divide ax by 10
+    div cx		; ax = 1, dx = 5
+    add ax, 0x30	; add ascii value of '0' to get the ascii value of the number
+    add dx, 0x30
 
     mov ah, 0x0F    ; make the characters white
     mov dh, 0x0F
 
-	mov WORD [es:bx], ax    ; write the character '1' to video memory
+    mov WORD [es:bx], ax    ; write the character '1' to video memory
     add bx, 2               ; go to the next position in video memory
     mov WORD [es:bx], dx    ; write the character '5' to video memory
 
