@@ -8,7 +8,7 @@ msg db "Hello World! ", 0
 
 main:
     cli             ; disable interrupts
-    xor ax, ax      ; Zero out out all registers
+    xor ax, ax      ; zero out out all registers
     mov ds, ax
     mov es, ax
     mov ss, ax
@@ -19,8 +19,8 @@ main:
     int 0x10
 
     mov cx, 0xFFFF
-delay_loop:
-    loop delay_loop
+delay_loop:         ; delay to ensure hardware is initialized
+    loop delay_loop ; this is necessary for running on real hardware
 
     ; set the segment up to write to VGA video memory
     mov ax, 0xb800
